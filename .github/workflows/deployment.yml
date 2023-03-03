@@ -8,12 +8,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.8.6'
+      
+      - name: Create and start virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+      
       - name: Install Dependencies
         run: pip install -r requirements.txt
+      
       - name: Run tests
         run: pytest
 
@@ -24,9 +32,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2    
+      
       - name: Run deploy script
-#        with:
-#          password: ${{ secrets.server_password}}        
+        with:
+          password: ${{ secrets.server_password}}        
         run: |
           chmod +x .github/scripts/deploy.sh
           .github/scripts/deploy.sh
