@@ -25,7 +25,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2    
       - name: Run deploy script
-        with:
-          password: ${{ secrets.server_password}}        
-        run: bash .github/scripts/deploy.sh
+#        with:
+#          password: ${{ secrets.server_password}}        
+        run: |
+          chmod +x .github/scripts/deploy.sh
+          .github/scripts/deploy.sh
+        shell: bash
 
