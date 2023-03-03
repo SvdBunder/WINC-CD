@@ -22,3 +22,8 @@ def about():
 @app.route("/cow")
 def cow():
     return render_template("cow.html", name_browser_tab="Cow")
+
+
+@app.route("/dog")
+def dog():
+    return render_template("dog.html", name_browser_tab="Dog")
