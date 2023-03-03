@@ -23,6 +23,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Run deploy script
-        run: bash .github/scripts/deploy.sh
         with:
           password: ${{ secrets.server_password}}        
+        run: bash .github/scripts/deploy.sh
+
