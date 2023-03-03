@@ -22,6 +22,8 @@ jobs:
     needs: run-tests
     runs-on: ubuntu-20.04
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2    
       - name: Run deploy script
         with:
           password: ${{ secrets.server_password}}        
