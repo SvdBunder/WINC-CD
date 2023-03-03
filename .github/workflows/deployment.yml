@@ -17,7 +17,7 @@ jobs:
       - name: Run tests
         run: pytest
 
-run deploy job only when job run-tests completed successfully
+# run deploy job only when job run-tests completed successfully
   deploy:
     needs: run-tests
     runs-on: ubuntu-20.04
