@@ -5,3 +5,5 @@ cd /home
 git pull origin master
 
 systemctl restart farm
+
+systemctl status farm
