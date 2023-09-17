@@ -7,12 +7,12 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
-          python-version: '3.8.6'
+          python-version: '3.11.0'
 
 # To make Flask work
       - name: Create and start virtual environment
@@ -35,12 +35,12 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2    
+        uses: actions/checkout@v3    
       
       - name: Run deploy script
         shell: bash
         env:
-          password: ${{ secrets.server_password}}
+          password: ${{secrets.server_password}}
         run: |
           chmod +x .github/scripts/deploy.sh
           .github/scripts/deploy.sh
