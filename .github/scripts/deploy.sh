@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo SSH root@$HOST_IP
-echo $HOST_PASSWORD
+SSH root@$HOST_IP
+$HOST_PASSWORD
 
-cd /home
+cd /home/
 
 git pull origin master
 
