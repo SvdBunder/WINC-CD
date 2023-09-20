@@ -29,5 +29,5 @@ def dog():
     return render_template("dog.html", name_browser_tab="Dog")
 
 @app.route("/pig")
-def dog():
+def pig():
     return render_template("pig.html", name_browser_tab="Pig")
