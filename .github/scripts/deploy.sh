@@ -1,6 +1,7 @@
 #!/bin/bash
 
-SSH root@178.62.217.227
+echo SSH root@$HOST_IP
+echo $HOST_PASSWORD
 
 cd /home
 
@@ -8,4 +9,4 @@ git pull origin master
 
 systemctl restart farm
 
-systemctl status farm
+exit

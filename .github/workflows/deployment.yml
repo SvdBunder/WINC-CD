@@ -35,15 +35,17 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3    
-      
+        uses: actions/checkout@v3
+             
       - name: Run deploy script
         shell: bash
         env:
-          password: ${{secrets.server_password}}
+          HOST_IP: ${{secrets.SERVER_IP}}
+          HOST_PASSWORD: ${{secrets.SERVER_PASSWORD}}
         run: |
           chmod +x .github/scripts/deploy.sh
           .github/scripts/deploy.sh
-        
+
+
 
 
