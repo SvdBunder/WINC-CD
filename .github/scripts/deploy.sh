@@ -1,12 +1,11 @@
 #!/bin/bash
 
-ssh root@$HOST_IP
-$HOST_PASSWORD
+ssh root@$HOST_IP "cd /home/;git pull origin master;systemctl restart farm;exit"
 
-cd /home/
 
-git pull origin master
 
-systemctl restart farm
 
-exit
+
+
+
+
