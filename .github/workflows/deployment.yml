@@ -14,7 +14,7 @@ jobs:
         with:
           python-version: '3.11.0'
 
-# Flask installeren
+# virtual environment en Flask installeren
       - name: Create and start virtual environment
         run: |
           python -m venv venv
@@ -27,7 +27,7 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-        # tests van test_main.py uitvoeren      
+# tests van test_main.py uitvoeren      
       - name: Run tests
         run: pytest
 
@@ -39,24 +39,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
              
+# t.b.v. authentication bij inloggen op host => geen wachtwoord nodig
+      - name: install ssh keys
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/id_ed25519
+          echo "${{secrets.SERVER_PRIVATEKEY}}" > ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{secrets.SERVER_IP}} > ~/.ssh/known_hosts
 
-#      - name: install ssh keys
-#        run: |
-#          install -m 600 -D /dev/null ~/.ssh/id_ed25519
-#          echo "${{secrets.SERVER_PRIVATEKEY}}" > ~/.ssh/id_ed25519
-#          ssh-keyscan -H ${{secrets.SERVER_IP}} > ~/.ssh/known_hosts
-      
+# shell script met deploy commands activeren
       - name: Run deploy script
         env:
           HOST_IP: ${{secrets.SERVER_IP}}
-          HOST_PASS: ${{secrets.SERVER_PASSWORD}}
         run: |
           chmod +x .github/scripts/deploy.sh
           .github/scripts/deploy.sh
         shell: bash
 
-       
-#      - name: remove ssh keys
-#        run: rm -rf ~/.ssh
+# verwijderen ssh keys       
+      - name: remove ssh keys
+        run: rm -rf ~/.ssh
 
 
