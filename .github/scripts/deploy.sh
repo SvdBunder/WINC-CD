@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SSH root@$HOST_IP
+ssh root@$HOST_IP
 $HOST_PASSWORD
 
 cd /home/
