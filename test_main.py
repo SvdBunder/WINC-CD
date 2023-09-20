@@ -29,6 +29,9 @@ def test_dog(client):
     response = client.get("/dog")
     assert response.status_code == 200
 
+def test_pig(client):
+    response = client.get("/pig")
+    assert response.status_code == 200
 
 def test_redirect(client):
     response = client.get("/home")
