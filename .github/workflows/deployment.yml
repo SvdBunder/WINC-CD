@@ -53,7 +53,7 @@ jobs:
         run: |
           chmod +x .github/scripts/deploy.sh
           .github/scripts/deploy.sh
-          shell: bash
+        shell: bash
 
       - name: remove ssh keys
         run: rm -rf ~/.ssh
